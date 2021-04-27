@@ -259,6 +259,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0 
 let g:syntastic_check_on_wq = 0 
 let g:syntastic_python_checkers = []
+let g:syntastic_yaml_checkers = ["yamllint"]
 "let g:syntastic_python_checkers = ['pylint']
 
 
@@ -315,3 +316,21 @@ endfun
 map <leader>l :call GitCommand("log -p") <CR>
 " -- git blame for current file
 map <leader>b :call GitCommand("blame") <CR>"
+
+
+
+" ============
+" Set up yaml format
+" ============
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+" yaml indentLine 
+" git clone https://github.com/Yggdroot/indentLine.git ~/.vim/bundle/indentLine
+"let g:indentLine_enabled = 1
+"let g:indentLine_char_list = ['|', '¦', '', '┊']
+
+"yaml folding
+"git clone https://github.com/pedrohdz/vim-yaml-folds.git ~/.vim/bundle/vim-yaml-folds
+set foldlevelstart=20
+
+
