@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/chjin/.oh-my-zsh"
+export ZSH="/Users/cj/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -129,6 +129,18 @@ alias ssh_kaggle='ssh -L 8080:localhost:8000 jin@10.238.44.24'
 # Airflow
 export AIRFLOW_HOME=~/airflow
 
+# bin
+export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=/Applications/ampl.macos64:$PATH
+
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+
+# OpenAI
+export OPENAI_API_KEY='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'
+
 #export PYSPARK_DRIVER_PYTHON=jupyter
 #export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
@@ -150,30 +162,26 @@ export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 #export PATH="/usr/local/opt/ruby/bin:$PATH"
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
-export PYTHONPATH=${PYTHONPATH}:~/allo
-export PYTHONPATH=${PYTHONPATH}:~/repos/mip
-export PYTHONPATH=${PYTHONPATH}:~/repos/ml
-export PYTHONPATH=${PYTHONPATH}:~/repos/siamese_triplet
+#export PYTHONPATH=${PYTHONPATH}:~/allo
+
+export PYTHONPATH=${PYTHONPATH}:~/repos/vnpy/build/lib/vnpy
 
 
-# added by Anaconda3 2018.12 installer
-# >>> conda init >>>
+# >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false '/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+__conda_setup="$('/Users/cj/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    \eval "$__conda_setup"
+    eval "$__conda_setup"
 else
-    if [ -f "/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/anaconda3/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
+    if [ -f "/Users/cj/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/cj/miniconda3/etc/profile.d/conda.sh"
     else
-        \export PATH="/anaconda3/bin:$PATH"
+        export PATH="/Users/cj/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
-# <<< conda init <<<
+# <<< conda initialize <<<
 
-source /anaconda3/etc/profile.d/conda.sh 
-[[ -z $TMUX ]] || conda deactivate; conda activate base
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
